@@ -19,6 +19,14 @@ jobs:
         with:
           submodules: true
           lfs: false
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.20.4'
+      - name: Update npm
+        run: npm install -g npm@latest
+      - name: Clear npm cache
+        run: npm cache clean --force
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
